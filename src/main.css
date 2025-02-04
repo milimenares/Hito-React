@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+body {
+    font-family: "Roboto Flex", serif;
+}
+
+.logo {
+    width: 145px;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+
+.fondo-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)), url(./assets/img/Header.jpg);
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo-header {
+    width: 300px;
+}
+
+.titulo-header {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 4px;
+}
+
+.subtitulo-header {
+    color: white;
+    text-align: center;
+}
+
+.fondo-home {
+    background-image: url(./assets/img/fondo.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card {
+    flex-shrink: 1;
+}
+
+h2 {
+    padding: 20px 20px 5px 20px;
+    text-align: center;
+}
+
+.ingredientes {
+    padding: 0 20px 0 20px;
+    text-align: center;
+}
+
+h4 {
+    padding: 0 20px 0 20px;
+    text-align: center;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 20px 0;
+}
+
+footer {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 30px 0 15px 0;
+}
+
+footer p {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+footer img {
+    width: 145px;
+    margin-bottom: 10px;
+}
+
+
+
+@media (min-width: 768px) {
+    .fondo-header {
+        height: 300px;
+    }
+}
