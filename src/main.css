@@ -89,6 +89,15 @@ footer img {
     margin-bottom: 10px;
 }
 
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+input {
+    margin-bottom: 20px;
+}
 
 
 @media (min-width: 768px) {
