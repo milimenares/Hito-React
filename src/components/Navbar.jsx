@@ -7,7 +7,7 @@ const Navbar = () => {
 
     <nav className="navbar navbar-expand-lg bg-black navbar-dark">
         <div className="container">
-            <a className="navbar-brand px-2" href="#">Pizzería <img src="./src/assets/img/logo.png" className="img-fluid logo"/></a>
+            <a className="navbar-brand px-2" href="#">Pizzería <img src="./src/assets/img/logo.png" alt="Mamma Mía!" className="img-fluid logo"/></a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
