@@ -3,7 +3,7 @@ import { useState } from 'react'
 const Login = () => {
 
     const [entrar, setEntrar] = useState({
-        nombre: '',
+        email: '',
         pass: ''
     })
 
@@ -14,9 +14,9 @@ const Login = () => {
     const handleSubmit = (evento) => {
         evento.preventDefault()
 
-        const {nombre, pass} = entrar //este es el destructuring
+        const {email, pass} = entrar //este es el destructuring
 
-        if(!nombre.trim() || !pass.trim()){
+        if(!email.trim() || !pass.trim()){
             Swal.fire({
               title: "ERROR",
               text: "Por favor, debes rellenar todos los campos",
@@ -40,7 +40,7 @@ const Login = () => {
                 text: "Tu ingreso ha sido exitoso",
                 icon: "success"
               });
-              setEntrar({nombre:'', pass:''})
+              setEntrar({email:'', pass:''})
               return
           }
 
@@ -58,7 +58,7 @@ const Login = () => {
           <h1>Login</h1>
           <div className="card p-4">
             <form onSubmit={handleSubmit}>
-              <input type='text' value={entrar.nombre} onChange={handleEntrar} name='nombre' placeholder='Ingresa tu nombre' className='form-control'></input>
+              <input type='email' value={entrar.email} onChange={handleEntrar} name='email' placeholder='Ingresa tu email' className='form-control'></input>
               <input type='password' value={entrar.pass} onChange={handleEntrar} name='pass' placeholder='Ingresa tu contraseña' className='form-control'></input>
               <button type='submit' className="btn btn-danger mx-auto d-block">Enviar</button>
             </form>

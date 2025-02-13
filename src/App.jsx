@@ -10,8 +10,8 @@ const App = () => {
   return (
     <>
     <Navbar/>
-    {/* <Home/> */}
-    {/* <RegisterPage/> */}
+    <Home/>
+    <RegisterPage/>
     <Login/>
     <Footer/>
     </>

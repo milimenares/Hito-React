@@ -58,7 +58,7 @@ const RegisterPage = () => {
           <h1>Register</h1>
           <div className="card p-4">
             <form onSubmit={handleSubmit}>
-              <input type='text' value={usuario.email} onChange={handleUsuario} name='email' placeholder='Ingresa tu nombre' className='form-control'></input>
+              <input type='email' value={usuario.email} onChange={handleUsuario} name='email' placeholder='Ingresa tu email' className='form-control'></input>
               <input type='password' value={usuario.pass1} onChange={handleUsuario} name='pass1' placeholder='Ingresa una contraseña' className='form-control'></input>
               <input type='password' value={usuario.pass2} onChange={handleUsuario} name='pass2' placeholder='Repite la contraseña' className='form-control'></input>
               <button type='submit' className="btn btn-danger mx-auto d-block">Enviar</button>
