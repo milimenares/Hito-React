@@ -99,9 +99,31 @@ input {
     margin-bottom: 20px;
 }
 
+/* Cart */
+
+.img-cart {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.cantidad {
+    display: flex;
+    align-items: center;
+}
+
+
+@media (min-width: 576px) {
+    .img-cart {
+        height: 70px;
+    }
+}
 
 @media (min-width: 768px) {
     .fondo-header {
         height: 300px;
+    }
+    .img-cart {
+        height: 80px;
     }
 }

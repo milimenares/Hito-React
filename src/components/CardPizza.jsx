@@ -2,13 +2,17 @@ const CardPizza = ({img, name, price, ingredients}) => {
   return (
     <div className="col-lg-4 col-md-6 col-sm-11 mb-4 d-flex">
         <div className="card">
-            <img src={img} alt="Pizza" className="card-img-top" />
+            <img src={img} alt={name} className="card-img-top" />
             <div>
                 <h2>Pizza {name}</h2>
                 <hr/>
                 <div className="ingredientes">
                     <h5>Ingredientes:</h5>
-                    <p>{ingredients}</p>
+                    <ul className="list-unstyled">
+                        {ingredients.map((ingredient) => (
+                            <li key={ingredient}>{ingredient}</li>
+                        ))}
+                    </ul>
                 </div>
                 <hr/>
                 <h4>Precio: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(price)}</h4>
