@@ -112,10 +112,20 @@ input {
     align-items: center;
 }
 
+/* Pizza */
+
+.img-pizza {
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+    height: 100%;
+}
 
 @media (min-width: 576px) {
     .img-cart {
         height: 70px;
+    }
+    .img-pizza {
+        border-radius: 5px 5px 0 0;
     }
 }
 
@@ -125,5 +135,8 @@ input {
     }
     .img-cart {
         height: 80px;
+    }
+    .img-pizza {
+        border-radius: 5px 0 0 5px;
     }
 }
