@@ -1,23 +1,31 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import Swal from 'sweetalert2'
 import Navbar from './components/Navbar'
-import Home from './components/Home'
 import Footer from './components/Footer'
-import RegisterPage from './components/Register'
-import Login from './components/Login'
-import Cart from './components/Cart'
-import Pizza from './components/Pizza'
+import NotFound from './components/NotFound'
+import Home from './pages/Home'
+import RegisterPage from './pages/Register'
+import Login from './pages/Login'
+import Cart from './pages/Cart'
+import Pizza from './pages/Pizza'
+import Profile from './components/Profile'
 
 const App = () => {
   return (
     <>
-    <Navbar/>
-    {/* <Home/> */}
-    {/* <RegisterPage/> */}
-    {/* <Login/> */}
-    {/* <Cart/> */}
-    <Pizza/>
-    <Footer/>
+      <BrowserRouter>
+        <Navbar/>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/register' element={<RegisterPage/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/pizza/p001' element={<Pizza/>}/>
+            <Route path='*' element={<NotFound/>}/>
+          </Routes>
+        <Footer/>
+      </BrowserRouter>
     </>
   )
 }

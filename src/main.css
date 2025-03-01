@@ -8,10 +8,17 @@ body {
     width: 145px;
 }
 
-.navbar-brand {
+.brand {
     text-transform: uppercase;
     font-weight: 400;
     letter-spacing: 3px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
 }
 
 .fondo-header {
@@ -118,6 +125,12 @@ input {
     border-radius: 5px 5px 0 0;
     object-fit: cover;
     height: 100%;
+}
+
+/* Not Found */
+
+.img-notfound {
+    max-width: 350px;
 }
 
 @media (min-width: 576px) {

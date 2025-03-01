@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "bootstrap/dist/js/bootstrap.bundle.min"
 import './main.css'
+import Swal from 'sweetalert2'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
