@@ -5,6 +5,7 @@ import Logo from '../assets/img/logo.png'
 const Navigation = () => {
 
     const total = 25000;
+    const token = false;
 
     return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -14,12 +15,16 @@ const Navigation = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link as={Link} to='/'>Home</Nav.Link>
-            <Nav.Link as={Link} to='/register'>Register</Nav.Link>
-            <Nav.Link as={Link} to='/login'>Login</Nav.Link>
-            <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
-            <Nav.Link as={Link} to='/cart'>Cart</Nav.Link>
-            <Nav.Link as={Link} to='/404'>NotFound</Nav.Link> {/*Se agrega solo para facilitar la revision de la misma*/}
-            {/* <Nav.Link as={Link} to='/pizza/p001'>Pizza</Nav.Link>  */}
+            { token ? (
+                <>
+                <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
+                </>
+            ) : (
+                <>
+                <Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                <Nav.Link as={Link} to='/register'>Register</Nav.Link>
+                </>
+            )}
             <Link to='/cart' className='ms-lg-3 mt-lg-0 mt-3'>
                 <Button variant='outline-warning'>🛒 Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(total)}</Button>
             </Link>
