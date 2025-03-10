@@ -16,6 +16,7 @@ const Home = () => {
           {datosHome.map((datoHome) => (
             <CardPizza
             key={datoHome.id}
+            id={datoHome.id}
             name={datoHome.name}
             price={datoHome.price}
             ingredients={datoHome.ingredients}
