@@ -1,31 +1,15 @@
-// import { pizzas } from "../pizzas"
+import { useContext } from "react"
 import CardPizza from "../components/CardPizza"
 import Header from "../components/Header"
-import { useEffect, useState } from "react"
+import { CartContext } from "../context/CartContext"
 
 const Home = () => {
 
-  const [datosHome, setDatosHome] = useState([])
-
-  const getDatosHome = async () => {
-    try {
-      const res = await fetch('http://localhost:5001/api/pizzas')
-      const data = await res.json()
-      setDatosHome(data)
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-
-  useEffect(() => {
-    getDatosHome()
-}, [])
+  const {datosHome} = useContext(CartContext)
 
   return (
     <>
-
     <Header/>
-
     <div className="container-fluid fondo-home">
       <div className="container pt-5 pb-4">
         <div className="row justify-content-center">
@@ -42,7 +26,6 @@ const Home = () => {
         </div>
       </div>
     </div>
-
     </>
   )
 }

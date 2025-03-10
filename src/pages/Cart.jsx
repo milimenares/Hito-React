@@ -1,29 +1,9 @@
-import { useState } from "react"
-import { pizzaCart } from "../pizzas"
+import { useContext } from "react"
+import { CartContext } from "../context/CartContext"
 
 const Cart = () => {
 
-  const [cart, setCart] = useState(pizzaCart)
-
-  const calcularTotal = () => {
-    return cart.reduce((acc, pizza) => acc + pizza.price * pizza.count, 0)
-  }
-
-  const masPizza = (id) => {
-    const newCart = cart.map((pizza) =>
-      pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-    )
-    setCart(newCart)
-  }
-
-  const menosPizza = (id) => {
-    const newCart = cart.map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-      )
-      .filter((pizza) => pizza.count > 0) // eliminar si count llega a 0
-
-    setCart(newCart)
-  }
+  const { cart, calcularTotal, masPizza, menosPizza } = useContext(CartContext)
 
   return (
     <div className="container my-5">
@@ -37,11 +17,12 @@ const Cart = () => {
             <div className="d-flex align-items-center gap-3">
                 <button className="btn btn-danger" onClick={() => menosPizza(pizza.id)}>-</button>
                 <span className="cantidad">{pizza.count}</span>
-                <button className="btn btn-danger" onClick={() => masPizza(pizza.id)}>+</button>
+                <button className="btn btn-danger" onClick={() => masPizza(pizza)}>+</button>
             </div>
         </div>
         </div>
       ))}
+
       <hr />
         <div className="text-center">
             <h3 className="mb-3 text-uppercase">Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(calcularTotal())}</h3>

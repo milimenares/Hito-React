@@ -1,10 +1,13 @@
 import { Navbar, Container, Nav, Image, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Logo from '../assets/img/logo.png'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 const Navigation = () => {
 
-    const total = 25000;
+  const { calcularTotal } = useContext(CartContext)
+
     const token = false;
 
     return (
@@ -26,7 +29,7 @@ const Navigation = () => {
                 </>
             )}
             <Link to='/cart' className='ms-lg-3 mt-lg-0 mt-3'>
-                <Button variant='outline-warning'>🛒 Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(total)}</Button>
+                <Button variant='outline-warning'>🛒 Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(calcularTotal())}</Button>
             </Link>
           </Nav>
         </Navbar.Collapse>
