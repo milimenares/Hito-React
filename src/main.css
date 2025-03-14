@@ -16,11 +16,6 @@ body {
     color: white;
 }
 
-.nav-link {
-    color: white;
-    text-decoration: none;
-}
-
 .fondo-header {
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)), url(./assets/img/Header.jpg);
     background-size: cover;

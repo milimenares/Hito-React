@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { useParams } from "react-router-dom"
+import { CartContext } from "../context/CartContext"
 
 const Pizza = () => {
 
     const [datosPizzas, setDatosPizzas] = useState({})
+    const { id } = useParams()
+    const { masPizza } = useContext(CartContext)
 
     const getPizzas = async () => {
         try {
-            const res = await fetch('http://localhost:5001/api/pizzas/p001')
+            const res = await fetch(`http://localhost:5001/api/pizzas/${id}`)
             const data = await res.json()
             setDatosPizzas(data)
         } catch (error) {
@@ -41,7 +45,7 @@ const Pizza = () => {
                             </ul>
                             <div className="d-flex justify-content-around pt-3">
                             <h5>Precio: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(datosPizzas.price)}</h5>
-                            <button className="btn btn-dark">Añadir 🛒</button>
+                            <button className="btn btn-dark" onClick={() => masPizza(datosPizzas)}>Añadir 🛒</button>
                             </div>
                         </div>
                     </div>
