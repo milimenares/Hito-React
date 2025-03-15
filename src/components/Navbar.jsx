@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, Image, Button } from 'react-bootstrap'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import Logo from '../assets/img/logo.png'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
@@ -9,8 +9,14 @@ const Navigation = () => {
 
   const validarRuta = ({ isActive }) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link nav-warning'
 
+  const navigate = useNavigate()
   const { calcularTotal } = useContext(CartContext)
   const { token, logOut } = useContext(UserContext)
+
+  const handleLogout = () => {
+    logOut()
+    navigate('/')
+  }
 
     return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -28,7 +34,7 @@ const Navigation = () => {
                   <Button variant='outline-light'>🔓 Profile</Button>
                 </NavLink>
                 <Nav.Link>
-                  <Button onClick={logOut} variant='outline-danger'>❌ Logout</Button>
+                  <Button onClick={handleLogout} variant='outline-danger'>❌ Logout</Button>
                 </Nav.Link>
                 </>
             ) : (
