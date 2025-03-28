@@ -1,11 +1,63 @@
 import { useContext } from "react"
 import { CartContext } from "../context/CartContext"
 import { UserContext } from "../context/UserContext"
+import axios from "axios"
+import Swal from "sweetalert2"
+import { useNavigate } from "react-router-dom"
 
 const Cart = () => {
 
-  const { cart, calcularTotal, masPizza, menosPizza } = useContext(CartContext)
-  const { token, logOut } = useContext(UserContext)
+  const { cart, calcularTotal, masPizza, menosPizza, vaciarCarrito } = useContext(CartContext)
+  const { user, token } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  const handleCheckout = async () => {
+
+    if (!user || !token) {
+      Swal.fire({
+        title: "Oh oh",
+        text: "Debes iniciar sesión para hacer tu compra",
+        icon: "warning"
+      })
+      navigate('/login')
+      return
+    }
+
+    if (cart.length === 0) {
+      Swal.fire({
+        title: "Carrito vacío",
+        text: "No puedes disfrutar con el carrito vacío! Nosotros te guiamos al paraíso de las pizzas",
+        icon: "warning"
+      })
+      navigate('/')
+      return
+    }
+
+    try {
+      const res = await axios.post('http://localhost:5001/api/checkouts', { cart }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      if (token) {
+        Swal.fire({
+          title: "Compra exitosa!",
+          text: `Ñami! ya puedes disfrutar de tu pizza ${user?.email || "pizzamaníac@"}!`,
+          icon: "success"
+        }).then(() => {
+          vaciarCarrito()
+        })
+      }
+    } catch (error) {
+      console.error("Error en el checkout", error)
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un problema con tu compra, puedes intentar nuevamente?",
+        icon: "error"
+      })
+    }
+  }
 
   return (
     <div className="container my-5">
@@ -28,7 +80,9 @@ const Cart = () => {
       <hr />
         <div className="text-center">
             <h3 className="mb-3 text-uppercase">Total: {new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency'}).format(calcularTotal())}</h3>
-            <div><button className="btn btn-dark text-uppercase" disabled={ !token }>Pagar</button></div>
+            <div>
+              <button className="btn btn-dark text-uppercase" onClick={handleCheckout}>Pagar</button>
+            </div>
         </div>
     </div>
   )

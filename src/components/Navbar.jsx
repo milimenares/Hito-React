@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav, Image, Button } from 'react-bootstrap'
-import { NavLink, Link, useNavigate } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import Logo from '../assets/img/logo.png'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
@@ -9,14 +9,8 @@ const Navigation = () => {
 
   const validarRuta = ({ isActive }) => isActive ? 'nav-item nav-link active' : 'nav-item nav-link nav-warning'
 
-  const navigate = useNavigate()
   const { calcularTotal } = useContext(CartContext)
-  const { token, logOut } = useContext(UserContext)
-
-  const handleLogout = () => {
-    logOut()
-    navigate('/')
-  }
+  const { user, handleLogout } = useContext(UserContext)
 
     return (
     <Navbar expand="lg" bg="dark" variant="dark">
@@ -28,7 +22,7 @@ const Navigation = () => {
             <NavLink to='/' className={validarRuta}>
               <Button variant='outline-light'>🍕 Home</Button>
             </NavLink>
-            { token ? (
+            { user ? (
                 <>
                 <NavLink to='/profile' className={validarRuta}>
                   <Button variant='outline-light'>🔓 Profile</Button>
@@ -36,6 +30,9 @@ const Navigation = () => {
                 <Nav.Link>
                   <Button onClick={handleLogout} variant='outline-danger'>❌ Logout</Button>
                 </Nav.Link>
+                <NavLink to='/profile' className={validarRuta}>
+                  <Button variant='link' style={{ color: 'white', textDecoration: 'none' }} className='d-lg-block d-none'>Hola! {user?.email}</Button>
+                </NavLink>
                 </>
             ) : (
                 <>

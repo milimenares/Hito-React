@@ -48,10 +48,15 @@ const CartProvider = ({ children }) => {
         return cart.reduce((acc, item) => acc + item.price * item.count, 0)
       }
 
+      const vaciarCarrito = () => {
+        setCart([])
+      }
+
       const stateGlobal = {
         datosHome,
         getDatosHome,
         cart,
+        vaciarCarrito,
         calcularTotal,
         masPizza,
         menosPizza,
